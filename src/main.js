@@ -7,9 +7,11 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 
 import { fetchData } from "./js/pixabay-api";
 
+import { createMarkup } from "./js/render-functions";
 
-const btnSubmit = document.querySelector("button");
+
 const form = document.querySelector("form");
+const gallery = document.querySelector("ul")
 
 
 
@@ -19,12 +21,18 @@ form.addEventListener("submit", (event) => {
     
 
     fetchData(inputValue)
-    .then(data => console.log(data))
+    .then(data => gallery.insertAdjacentHTML("beforeend",createMarkup(data.hits)))
     .catch(error => console.log("catch", error))
 
 });
 
- 
+
+const lightbox = new SimpleLightbox('.gallery a', { 
+     
+    captionsData: `alt`,
+    captionDelay: 250,
+      
+    });
     
 
     
