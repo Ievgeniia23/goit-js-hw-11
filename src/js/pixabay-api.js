@@ -3,9 +3,6 @@
 const API_KEY = "43279373-50d6c66b7fce6ad9a5efd1552";
 
 
-
-
-
 export const fetchData = (inputValue) => {
     const params = new URLSearchParams({
         key: API_KEY,
